@@ -1,0 +1,241 @@
+.modal-wrapper {
+    display: table;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform: scale(1);
+
+    &.--hide {
+        animation: quickScaleDown 0s .5s linear forwards;
+    }
+}
+
+.modal-background {
+    animation: fadeIn .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    background-color: rgba(0,0,0,.0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+
+    .--hide & {
+        animation: fadeOut .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    }
+}
+
+.modal {
+    animation: slideUp .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    background: linear-gradient(to bottom, var(--softgreen), var(--intensegreen));
+    padding: $padding;
+    width: 90%;
+
+    @include min-screen('lg') {
+        width: 50%;
+    }
+
+    .--hide & {
+        animation: slideDown .5s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    }
+
+    &.--player {
+        @include min-screen('lg') {
+            width: 75%;
+        }
+
+        @include min-screen('xl') {
+            width: 50%;
+        }
+    }
+}
+
+.modal__header {
+    border-bottom: 1px solid $brand-primary;
+    padding-bottom: $padding;
+    position: relative;
+}
+
+.modal__heading {
+    font-size: $font-size-md;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0;
+    text-transform: uppercase;
+}
+
+.modal__close {
+    background: none;
+    border: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    @include transition(all, .3s, ease-in);
+
+    &:hover {
+        opacity: 0.5;
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
+}
+
+.modal__body {
+    padding: $padding 0;
+}
+
+.modal__footer {
+    border-top: 1px solid $brand-primary;
+    display: flex;
+    justify-content: center;
+    padding: $padding 0;
+}
+
+.player__name {
+    margin: 0;
+    text-align: center;
+
+    @include min-screen('lg') {
+        text-align: left;
+    }
+}
+
+.player__wrapper {
+    @include min-screen('lg') {
+        display: flex;
+    }
+}
+
+.player__img {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex: 1 1 150px;
+}
+
+.player-img__inner  {
+    background-color: $brand-primary;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+        border-radius: 50%;
+        height: 150px;
+        width: 150px;
+    }
+}
+
+.player__content {
+    @include min-screen('lg') {
+        display:  flex;
+        flex: 1 1 70%;
+    }
+}
+
+.player__bio {
+    margin-bottom: $padding;
+
+    @include min-screen('lg') {
+        flex: 1 0 60%;
+        margin-bottom: 0;
+    }
+}
+
+.player__stats {
+    text-align: center;
+
+    @include min-screen('lg') {
+        flex: 1 0 40%;
+    }
+}
+
+.player-stats__season {
+    font-weight: $font-weight-bold;
+
+    @include min-screen('lg') {
+        text-align: left;
+    }
+}
+
+.player-stats__table {
+    color: $text-color-light;
+    margin: 0 auto;
+
+    @include min-screen('lg') {
+        margin: 0;
+    }
+
+    th {
+        background-color: $brand-primary;
+    }
+
+    td {
+        background-color: $brand-primary-alt;
+        padding: $padding/4 $padding/2;
+    }
+}
+
+.player__general {
+    font-weight: $font-weight-bold;
+    margin: $padding/2 0;
+    text-align: center;
+
+    @include min-screen('lg') {
+        text-align: left;
+    }
+
+    span {
+        &:not(:last-child) {
+            border-right: 1px solid $brand-primary;
+            margin-right: $padding/2;
+            padding-right: $padding/2;
+        }
+    }
+}
+
+.player__metadata {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    width: 500px;
+
+    @include min-screen('lg') {
+        align-items: flex-start;
+        width: auto;
+    }
+
+    li {
+        display: flex;
+        width: 100%;
+
+        span {
+
+            &:first-child {
+                font-weight: $font-weight-bold;
+                margin-right: $padding/6;
+                text-align: right;
+                width: 100%;
+            }
+
+            &:last-child {
+                margin-left: $padding/6;
+                text-align: left;
+                width: 100%;
+            }
+
+            @include min-screen('lg') {
+                &:first-child {
+                    width: 120px;
+                }
+            }
+        }
+    }
+}

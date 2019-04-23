@@ -1,0 +1,80 @@
+.btn {
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Lato', Arial, sans-serif;
+    font-weight: 900;
+    letter-spacing: 1px;
+    padding: $padding/2 $padding;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 -2px 0 black;
+    text-transform: uppercase;
+    user-select: none;
+    vertical-align: middle;
+    white-space: nowrap;
+
+    @include transition(all, .5s, ease-in);
+
+    &:hover {
+        opacity: 0.8;
+    }
+
+    &:active,
+    &:focus {
+        outline: none;
+    }
+
+    &.--primary {
+        background: linear-gradient(to bottom, $brand-primary-alt, $brand-primary);
+        color: $text-color-light;
+        display: inline-block;
+        text-shadow: 0 -2px 5px rgba($black, 0.5);
+
+        .widget & {
+            background: none;
+            color: $text-color-light;
+            margin-left: auto;
+            padding: 0;
+
+            .fas {
+                display: block;
+            }
+
+            .btn__text {
+                display: none;
+            }
+
+            @include min-screen ('md') {
+                background: linear-gradient(to bottom, $brand-primary-alt, $brand-primary);
+                margin-left: 0;
+                padding: $padding/2 $padding;
+
+                .fas {
+                    display: none;
+                }
+
+                .btn__text {
+                    display: block;
+                }
+            }
+        }
+    }
+
+    &.--secondary {
+        background: linear-gradient(to bottom, var(--greyblue), black);
+    }
+
+    &.--light {
+        background: $white;
+        color: $text-color-dark;
+        text-shadow: none;
+    }
+
+    .modal & {
+        margin: 0 $padding/2;
+    }
+}
+
